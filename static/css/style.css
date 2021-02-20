@@ -1,0 +1,19 @@
+body {
+  background-color: #a3fea6;
+  margin-top: 50px;
+  margin-left: 100px;
+  overflow-x: hidden;
+
+  }
+
+p {
+  font-family: Georgia, serif;
+  font-size: 1.2em;
+  color: DarkSlateGray;
+  }
+
+h1 {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 2.5em;
+  color: FireBrick;
+  }
