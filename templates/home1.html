@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Model Deployment</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">< /script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Cancer Treatment</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li ><a href="/">Upload CSV</a></li>
+        <li class="active"><a href="templates/home1.html">Manual Data</a></li>
+        <li><a href="#">Gene Tool</a></li>
+      </ul>
+    </div>
+  </nav><br>
+    <div class="container-fluid"style="padding-left:410px">
+  <p class="lead">Please Enter Gene Expression Data of Patient</p><br>
+  </div>
+  <div class="container-fluid"style="padding-left:90px">
+
+
+
+    <form method="POST", action="{{url_for('home1')}}">
+
+          <div class="form-row">
+             <div class="form-group col-md-4">
+      <input type="text", name='a', placeholder="MCM2", required="required", class="form-control" width="20px"/>
+  </div>
+  <div class="form-group col-md-4">
+  <input type="text", name='b', placeholder="DEK", required="required", class="form-control" />
+             </div>
+           </div>
+  <div class="form-row">
+  <div class="form-group col-md-4">
+  <input type="text", name='c', placeholder="H2AFZ", required="required", class="form-control" />
+  </div>
+  <div class="form-group col-md-4">
+  <input type="text", name='d', placeholder="METRN", required="required", class="form-control" />
+  </div>
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-4">
+  <input type="text", name='e', placeholder="NFIB", required="required", class="form-control" />
+  </div>
+  <div class="form-group col-md-4">
+  <input type="text", name='f', placeholder="TPX2", required="required", class="form-control" />
+  </div>
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-4">
+  <input type="text", name='g', placeholder="MCM6", required="required", class="form-control" />
+  </div>
+  <div class="form-group col-md-4">
+  <input type="text", name='h', placeholder="TOPBP1", required="required", class="form-control" />
+  </div></div>
+  <div class="form-row">
+  <div class="form-group col-md-4">
+  <input type="text", name='i', placeholder="FEN1", required="required", class="form-control" />
+  </div>
+  <div class="form-group col-md-4">
+  <input type="text", name='j', placeholder="TTK", required="required", class="form-control" />
+  </div>
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-4">
+  <input type="text", name='k', placeholder="ESR1", required="required", class="form-control" />
+  </div>
+  <div class="form-group col-md-4">
+  <input type="text", name='l', placeholder="MELK", required="required", class="form-control" />
+  </div>
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-4">
+  <input type="text", name='m', placeholder="E2F3", required="required", class="form-control" />
+  </div>
+  <div class="form-group col-md-4">
+  <input type="text", name='n', placeholder="CYP2B7P", required="required", class="form-control" />
+  </div>
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-4">
+  <input type="text", name='o', placeholder="TP53TG1", required="required", class="form-control" />
+  </div>
+  <div class="form-group col-md-4">
+  <input type="text", name='p', placeholder="RARRES1", required="required", class="form-control" />
+  </div></div>
+  <div class="form-row">
+  <div class="form-group col-md-4">
+  <input type="text", name='q', placeholder="ROPN1B", required="required", class="form-control" />
+  </div>
+  <div class="form-group col-md-4">
+  <input type="text", name='r', placeholder="PLCH1", required="required", class="form-control" />
+  </div></div>
+  <div class="form-row">
+  <div class="form-group col-md-4">
+  <input type="text", name='s', placeholder="SLC7A8", required="required", class="form-control" />
+  </div>
+    <div class="form-group col-md-4">
+  <input type="text", name='t', placeholder="MLPH", required="required", class="form-control" />
+  </div></div><br>
+<div class="container-fluid"style="padding-left:190px">
+<br>
+        <button type="submit" class="btn btn-success btn-sm "value='predict'style="width:790px;">Predict</button>
+      </div>
+
+    </form>
+</div>
+   <br>
+<br>
+<div class="container-fluid"style="padding-left:190px">
+  <p class="text-left"style="color:black;font-size:24px;"> Chemotherapy Suitability: {{ prediction_text }}</p>
+</div>
+   <br> <br> <br> <br> <br>
+   </body>
