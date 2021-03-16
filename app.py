@@ -17,7 +17,9 @@ def man():
 @app.route('/home1.html')
 def man1():
     return render_template('home1.html')
-
+@app.route('/home2.html')
+def man2():
+    return render_template('home2.html')
 @app.route('/predict',methods=['GET', 'POST'])
 def home():
     '''
@@ -97,7 +99,7 @@ def home1():
     #final_features = [np.array(int_features)]
     prediction1 = model.predict(arr)
 
-    output = prediction1[0]
+    output = prediction[0]
     if output==0:
         print("Chemotherapy Not Suitable")
     else:
