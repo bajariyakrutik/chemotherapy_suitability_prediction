@@ -97,7 +97,7 @@ def home1():
     #final_features = [np.array(int_features)]
     prediction1 = model.predict(arr)
 
-    output = prediction[0]
+    output = prediction1[0]
     if output==0:
         print("Chemotherapy Not Suitable")
     else:
