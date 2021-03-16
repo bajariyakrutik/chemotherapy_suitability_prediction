@@ -34,7 +34,7 @@
 
 
 
-    <form method="POST", action="{{url_for('home1')}}">
+    <form method="POST", action="http://localhost:5000/predict1">
 
           <div class="form-row">
              <div class="form-group col-md-4">
@@ -122,7 +122,7 @@
    <br>
 <br>
 <div class="container-fluid"style="padding-left:190px">
-  <p class="text-left"style="color:black;font-size:24px;"> Chemotherapy Suitability: {{ prediction_text }}</p>
+  <p class="lead"style="color:black;font-size:22px;"> Chemotherapy Suitability: {{ prediction1_text }}</p>
 </div>
    <br> <br> <br> <br> <br>
    </body>

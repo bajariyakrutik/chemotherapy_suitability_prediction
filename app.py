@@ -20,6 +20,7 @@ def man1():
 @app.route('/home2.html')
 def man2():
     return render_template('home2.html')
+
 @app.route('/predict',methods=['GET', 'POST'])
 def home():
     '''
@@ -68,7 +69,7 @@ def home():
     else:
         print("Chemotherapy Suitable")
     return render_template('home.html', data=prediction, prediction_text='{}'.format(output))
-@app.route('/predict',methods=['POST'])
+@app.route('/predict1',methods=['POST'])
 def home1():
     '''
     For rendering results on HTML GUI
@@ -99,7 +100,7 @@ def home1():
     #final_features = [np.array(int_features)]
     prediction1 = model.predict(arr)
 
-    output = prediction[0]
+    output = prediction1[0]
     if output==0:
         print("Chemotherapy Not Suitable")
     else:
