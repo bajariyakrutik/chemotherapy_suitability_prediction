@@ -6,6 +6,7 @@ import numpy as np
 from flask import Flask, render_template
 from flask import request, jsonify
 from werkzeug.utils import secure_filename
+from livereload import Server
 
 
 app = Flask(__name__)
@@ -14,15 +15,17 @@ model = pickle.load(open('model.pkl', 'rb'))
 @app.route('/')
 def man():
     return render_template('home.html')
-@app.route('/home1.html')
+
+@app.route('/page')
 def man1():
-    return render_template('home1.html')
-@app.route('/home2.html')
+    return render_template('page.html')
+
+@app.route('/result')
 def man2():
-    return render_template('home2.html')
+    return render_template('result.html')
 
 @app.route('/predict',methods=['GET', 'POST'])
-def home():
+def predict():
     '''
     For rendering results on HTML GUI
     '''
@@ -68,9 +71,9 @@ def home():
         print("Chemotherapy Not Suitable")
     else:
         print("Chemotherapy Suitable")
-    return render_template('home.html', data=prediction, prediction_text='{}'.format(output))
+    return render_template('result.html', data=prediction, prediction_text='{}'.format(output))
 @app.route('/predict1',methods=['POST'])
-def home1():
+def predict1():
     '''
     For rendering results on HTML GUI
     '''
@@ -105,6 +108,8 @@ def home1():
         print("Chemotherapy Not Suitable")
     else:
         print("Chemotherapy Suitable")
-    return render_template('home1.html', data=prediction1, prediction1_text='{}'.format(output))
+    return render_template('result.html', data=prediction1, prediction_text='{}'.format(output))
 if __name__ == "__main__":
-    app.run(debug=True)
+    # app.run(debug=True)
+    server = Server(app.wsgi_app)
+    server.serve()

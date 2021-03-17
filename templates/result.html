@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">< /script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -21,12 +21,13 @@
         <a class="navbar-brand" href="#">Cancer Treatment</a>
       </div>
       <ul class="nav navbar-nav">
-        <li><a href="/home">Upload CSV</a></li>
-        <li><a href="home1.html">Manual Data</a></li>
-        <li class="active"><a href="home2.html">Gene Tool</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/page">Predict</a></li>
       </ul>
     </div>
   </nav><br>
-
-   <br> <br> <br> <br> <br>
-   </body>
+  <div class="container-fluid">
+    <p class="lead"> Chemotherapy Suitability: {{ prediction_text }}</p>
+  </div>
+</body>
+</html>

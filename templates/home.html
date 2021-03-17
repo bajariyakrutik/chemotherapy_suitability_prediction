@@ -1,7 +1,6 @@
-
 <!DOCTYPE html>
-<html >
-<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<html>
+
 <head>
 <meta charset="UTF-8">
 <title>Model Deployment</title>
@@ -22,28 +21,11 @@
         <a class="navbar-brand" href="#">Cancer Treatment</a>
       </div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Upload CSV</a></li>
-        <li><a href="home1.html">Manual Data</a></li>
-        <li><a href="home2.html">Gene Tool</a></li>
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="/page">Predict</a></li>
       </ul>
     </div>
   </nav><br>
-  <div class="container-fluid"style="padding-left:430px">
 
-  <p class="lead">Please Enter Gene Expression Data of Patient</p>
-  <form action = "http://localhost:5000/predict" method = "POST" enctype = "multipart/form-data">
-    <div class="form-group col-md-12">
-      <input class="btn btn-warning btn-sm" type = "file" name = "file" accept=".xlsx" required /><br>
-<div class="container"style="padding-left:80px">
-      <button type="submit" class="btn btn-success btn-lg">Predict</button>
-    </div>
-    </div>
-
-  </form>
-
-  </div>
-<div class="container-fluid"style="padding-left:430px">
-<p class="lead"style="color:black;font-size:22px;"> Chemotherapy Suitability: {{ prediction_text }}</p>
-  </div>
-</body>
+   </body>
 </html>
