@@ -76,6 +76,7 @@ def predict():
     else:
         print("Chemotherapy Suitable")
     return render_template('result.html', data=prediction, prediction_text='{}'.format(output))
+
 @app.route('/predict1',methods=['POST'])
 def predict1():
     '''
@@ -113,6 +114,7 @@ def predict1():
     else:
         print("Chemotherapy Suitable")
     return render_template('result.html', data=prediction1, prediction_text='{}'.format(output))
+
 if __name__ == "__main__":
     # app.run(debug=True)
     server = Server(app.wsgi_app)
