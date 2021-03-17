@@ -1,44 +1,18 @@
-<!DOCTYPE html>
-<html >
+{% extends 'layout.html' %}
 
-<head>
-<meta charset="UTF-8">
-<title>Model Deployment</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
-</head>
-
-<body>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Cancer Treatment</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li><a href="/">Home</a></li>
-        <li class="active"><a href="/page">Predict</a></li>
-      </ul>
-    </div>
-  </nav><br>
-
+{% block content %}
   <!-- <div class="center"> -->
     <div id="form1" class="container-fluid">
       <div class="container">
         <div class="row">
           <div class="col text-center">
             <div class="container-fluid">
-              <p class="lead"><h2>Enter Gene Expression Data of Patient (Excel file)</h2></p>
+              <p class="lead"><h2>Enter Gene Expression Data of Patient</h2></p>
             </div>
             <form action = "{{ url_for('predict') }}" method = "POST" enctype = "multipart/form-data">
               <input class="form-control flex" type = "file" name = "file" accept=".xlsx" required /><br>
-              <button type="submit" class="btn btn-success"value='predict'>Predict</button>
-              <p style="color: blue;">If you want to enter data manually <button type="button" class="btn btn-default" id="manual">click here</button></p>
+              <button type="submit" class="btn btn-success btn-lg"value='predict'>Predict</button>
+              <p style="color: black;">If you want to enter data manually <button type="button" class="btn btn-info" id="manual">click here</button></p>
             </form>
           </div>
         </div>
@@ -50,112 +24,104 @@
         <div class="row">
           <div class="col text-center">
             <div class="container-fluid">
-              <p class="lead"><h2>Enter Gene Expression Data of Patient (Manually)</h2></p><br>
+              <p class="lead"><h2>Enter Gene Expression Data of Patient</h2></p><br>
             </div>
         
             <form method="POST", action="{{ url_for('predict1') }}">
-              <div class="form-row">
-                <div class="form-group col-md-4">
+              <div class="row g-3">
+                <div class="col mb-2">
                   <input type="text", name='a', placeholder="MCM2", required="required", class="form-control" width="20px"/>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="col mb-2">
                   <input type="text", name='b', placeholder="DEK", required="required", class="form-control" />
                 </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-4">
+                <div class="col mb-2">
                   <input type="text", name='c', placeholder="H2AFZ", required="required", class="form-control" />
                 </div>
-                <div class="form-group col-md-4">
+              </div>
+              <div class="row g-3">
+                <div class="col mb-2">
                   <input type="text", name='d', placeholder="METRN", required="required", class="form-control" />
                 </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-4">
+                <div class="col mb-2">
                   <input type="text", name='e', placeholder="NFIB", required="required", class="form-control" />
                 </div>
-                <div class="form-group col-md-4">
+                <div class="col mb-2">
                   <input type="text", name='f', placeholder="TPX2", required="required", class="form-control" />
                 </div>
               </div>
-              <div class="form-row">
-                <div class="form-group col-md-4">
+              <div class="row g-3">
+                <div class="col mb-2">
                   <input type="text", name='g', placeholder="MCM6", required="required", class="form-control" />
                 </div>
-                <div class="form-group col-md-4">
+                <div class="col mb-2">
                   <input type="text", name='h', placeholder="TOPBP1", required="required", class="form-control" />
                 </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-4">
+                <div class="col mb-2">
                   <input type="text", name='i', placeholder="FEN1", required="required", class="form-control" />
                 </div>
-                <div class="form-group col-md-4">
+              </div>
+              <div class="row g-3">
+                <div class="col mb-2">
                   <input type="text", name='j', placeholder="TTK", required="required", class="form-control" />
                 </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-4">
+                <div class="col mb-2">
                   <input type="text", name='k', placeholder="ESR1", required="required", class="form-control" />
                 </div>
-                <div class="form-group col-md-4">
+                <div class="col mb-2">
                   <input type="text", name='l', placeholder="MELK", required="required", class="form-control" />
                 </div>
               </div>
-              <div class="form-row">
-                <div class="form-group col-md-4">
+              <div class="row g-3">
+                <div class="col mb-2">
                   <input type="text", name='m', placeholder="E2F3", required="required", class="form-control" />
                 </div>
-                <div class="form-group col-md-4">
+                <div class="col mb-2">
                   <input type="text", name='n', placeholder="CYP2B7P", required="required", class="form-control" />
                 </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-4">
+                <div class="col mb-2">
                   <input type="text", name='o', placeholder="TP53TG1", required="required", class="form-control" />
                 </div>
-                <div class="form-group col-md-4">
+              </div>
+              <div class="row g-3">
+                <div class="col mb-2">
                   <input type="text", name='p', placeholder="RARRES1", required="required", class="form-control" />
                 </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-4">
+                <div class="col mb-2">
                   <input type="text", name='q', placeholder="ROPN1B", required="required", class="form-control" />
                 </div>
-                <div class="form-group col-md-4">
+                <div class="col mb-2">
                   <input type="text", name='r', placeholder="PLCH1", required="required", class="form-control" />
                 </div>
               </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
+              <div class="row g-3">
+                <div class="col mb-2">
                   <input type="text", name='s', placeholder="SLC7A8", required="required", class="form-control" />
                 </div>
-                <div class="form-group col-md-6">
+                <div class="col mb-2">
                   <input type="text", name='t', placeholder="MLPH", required="required", class="form-control" />
                 </div>
               </div><br>
               <!-- <div class="container-fluid"><br> -->
-                <button type="submit" class="btn btn-success"value='predict'>Predict</button>
+                <button type="submit" class="btn btn-success btn-lg"value='predict'>Predict</button>
               <!-- </div> -->
-              <p style="color: blue;">If you want to enter excel file <button type="button" class="btn btn-primary" id="excel">click here</button></p>
+              <p style="color: black;">If you want to enter excel file <button type="button" class="btn btn-info" id="excel">click here</button></p>
             </form>
           </div>
         </div>
       </div>
     </div>
   <!-- </div> -->
-
-<script>
-  $(document).ready(function() {
-  $("#manual").click(function() {
-    $("#form1").hide();
-    $("#form2").show();
-  });
-  $("#excel").click(function() {
-    $("#form1").show();
-    $("#form2").hide();
-  });
-});
-</script>
-</body>
-</html>
+  <script>
+    $(document).ready(function() {
+        $("#manual").click(function() {
+            $("#form1").hide();
+            $("#form2").show();
+        });
+        $("#excel").click(function() {
+            $("#form1").show();
+            $("#form2").hide();
+        });
+    });
+  </script>
+{% endblock %}

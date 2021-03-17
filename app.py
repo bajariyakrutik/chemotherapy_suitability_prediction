@@ -13,16 +13,20 @@ app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 
 @app.route('/')
-def man():
+def home():
     return render_template('home.html')
 
 @app.route('/page')
-def man1():
+def page():
     return render_template('page.html')
 
 @app.route('/result')
-def man2():
+def result():
     return render_template('result.html')
+
+@app.route('/gene')
+def gene():
+    return render_template('gene.html')
 
 @app.route('/predict',methods=['GET', 'POST'])
 def predict():
