@@ -1,5 +1,45 @@
 {% extends 'layout.html' %}
 
+{% block script %}
+<script>
+  $(document).ready(function(){
+    load_data();
+    function load_data(query)
+    {
+     $.ajax({
+      url:"/search",
+      method:"POST",
+      data:{query:query},
+      success:function(data)
+      {
+        $('#result').html(data);
+        $("#result").append(data.htmlresponse);
+      }
+     });
+    }
+    $('#text').keypress(function(e){
+      var key = e.which;
+      if(key == 13){
+        var search = $(this).val();
+        if(search != ''){
+          load_data(search);
+        }else{
+          load_data();
+     }
+      }
+    });
+  });
+</script>
+{% endblock %}
+
 {% block content %}
-  <p>Geney</p>
+  <h1 class="text-center">Gene Tool</h1>
+  <div class="container text-center">
+    <div class="container-fluid">
+      <div class="d-flex">
+        <input class="form-control me-2" type="search" name="text" id="text" placeholder="Enter Gene Symbol here to Search for details of the Genes matching" aria-label="Search">
+      </div>
+    </div>
+  </div>
+  <div class="container text-center" style="margin-top: 5%;" id="result" name="result"></div>
 {% endblock %}

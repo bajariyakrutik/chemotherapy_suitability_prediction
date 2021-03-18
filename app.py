@@ -3,6 +3,7 @@ import xlrd
 import pickle
 import openpyxl
 import numpy as np
+import urllib.request, json 
 from flask import Flask, render_template
 from flask import request, jsonify
 from werkzeug.utils import secure_filename
@@ -114,6 +115,17 @@ def predict1():
     else:
         print("Chemotherapy Suitable")
     return render_template('result.html', data=prediction1, prediction_text='{}'.format(output))
+
+@app.route('/search',methods=['POST'])
+def search():
+    if request.method == 'POST':
+        search_word = request.form['query']
+        print(search_word)
+        link = "https://clinicaltables.nlm.nih.gov/api/ncbi_genes/v3/search?terms="+search_word
+        with urllib.request.urlopen(link) as url:
+            data = json.loads(url.read().decode())
+            # print(data)
+    return jsonify({ 'htmlresponse': render_template('table.html', data = data, n = int(len(data[1]))) })
 
 if __name__ == "__main__":
     # app.run(debug=True)
