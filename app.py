@@ -126,7 +126,7 @@ def search():
         with urllib.request.urlopen(link) as url:
             data = json.loads(url.read().decode())
             # print(data)
-    return jsonify({ 'htmlresponse': render_template('table.html', data = data, n = int(len(data[1]))) })
+    return jsonify({ 'htmlresponse': render_template('table.html', data = data, n = int(len(data[1])), word = search_word ) })
 
 if __name__ == "__main__":
     # app.run(debug=True)
