@@ -119,7 +119,8 @@ def predict1():
 @app.route('/search',methods=['POST'])
 def search():
     if request.method == 'POST':
-        search_word = request.form['query']
+        word = request.form['query']
+        search_word = word.upper()
         print(search_word)
         link = "https://clinicaltables.nlm.nih.gov/api/ncbi_genes/v3/search?terms="+search_word
         with urllib.request.urlopen(link) as url:
