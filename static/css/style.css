@@ -1,8 +1,9 @@
-body {
-  background-color: #00BFFF;
-
-  overflow-x: hidden;
-
+body,html {
+  height: 100%;
+  width: 100%;
+  background-image: url("../img/background.jpg");
+  background-position: center;
+  background-size: cover;
   }
 
 p {
@@ -16,3 +17,27 @@ h1 {
   font-size: 2.5em;
   color: FireBrick;
   }
+
+#form2 {
+  display:none;
+  }
+
+input::placeholder {              
+  text-align: center;
+  color: black; 
+  }
+
+.center { 
+  justify-content: center;
+  align-items: center; /* Optional */
+  margin: auto;
+  width: 75%;
+} 
+
+.flex { 
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Optional */
+  margin: auto;
+  width: 30%;
+} 

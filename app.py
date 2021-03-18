@@ -3,23 +3,34 @@ import xlrd
 import pickle
 import openpyxl
 import numpy as np
+import urllib.request, json 
 from flask import Flask, render_template
 from flask import request, jsonify
 from werkzeug.utils import secure_filename
+from livereload import Server
 
 
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 
 @app.route('/')
-def man():
+def home():
     return render_template('home.html')
-@app.route('/home1.html')
-def man1():
-    return render_template('home1.html')
+
+@app.route('/page')
+def page():
+    return render_template('page.html')
+
+@app.route('/result')
+def result():
+    return render_template('result.html')
+
+@app.route('/gene')
+def gene():
+    return render_template('gene.html')
 
 @app.route('/predict',methods=['GET', 'POST'])
-def home():
+def predict():
     '''
     For rendering results on HTML GUI
     '''
@@ -65,9 +76,10 @@ def home():
         print("Chemotherapy Not Suitable")
     else:
         print("Chemotherapy Suitable")
-    return render_template('home.html', data=prediction, prediction_text='{}'.format(output))
-@app.route('/predict',methods=['POST'])
-def home1():
+    return render_template('result.html', data=prediction, prediction_text='{}'.format(output))
+
+@app.route('/predict1',methods=['POST'])
+def predict1():
     '''
     For rendering results on HTML GUI
     '''
@@ -102,6 +114,21 @@ def home1():
         print("Chemotherapy Not Suitable")
     else:
         print("Chemotherapy Suitable")
-    return render_template('home1.html', data=prediction1, prediction1_text='{}'.format(output))
+    return render_template('result.html', data=prediction1, prediction_text='{}'.format(output))
+
+@app.route('/search',methods=['POST'])
+def search():
+    if request.method == 'POST':
+        word = request.form['query']
+        search_word = word.upper()
+        print(search_word)
+        link = "https://clinicaltables.nlm.nih.gov/api/ncbi_genes/v3/search?terms="+search_word
+        with urllib.request.urlopen(link) as url:
+            data = json.loads(url.read().decode())
+            # print(data)
+    return jsonify({ 'htmlresponse': render_template('table.html', data = data, n = int(len(data[1])), word = search_word ) })
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    # app.run(debug=True)
+    server = Server(app.wsgi_app)
+    server.serve()
