@@ -2,13 +2,13 @@
 
 {% block content %}
 <h1 class="text-center">Chemotherapy Suitability Prediction Using Genomic Data</h1>
-<div class="text-center center">
+<div class="text-center center" style="margin-top: 3%;">
   <p>
     Breast Cancer is affecting more and more people nowadays. There are various treatments involved for it. It is important to understand that giving the same treatment to all the patients is not a right way of curing this disease. To predict suitable therapy, various clinical factors like age, stage of cancer, type of cancer are taken into consideration. But only such clinical factors are not enough to judge treatment. In this system, gene expression data of Breast Cancer patients is used, based on which chemotherapy suitability can be predicted. Gene Mutations can help us to know better. So here, researchers or doctors can enter the data of breast cancer patients via excel file or manual way. On filling the data, results will be displayed whether chemotherapy is suitable or not. This will help in precise treatment of patients thus avoiding side effects. Also, a web search tool is integrated to check for more information on Genes.
   </p>
-  <img src="{{ url_for('static', filename='img/Block Diagram.png') }}" alt="Block Diagram" width="60%">
+  <!-- <img src="{{ url_for('static', filename='img/Block Diagram.png') }}" alt="Block Diagram" width="60%"> -->
 </div>
-<footer class="bg-dark text-lg-start">
+<footer class="bg-dark text-lg-start fixed-bottom">
   <div class="container p-4">
     <div class="row">
       <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
