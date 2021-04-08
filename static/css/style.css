@@ -40,4 +40,9 @@ input::placeholder {
   align-items: center; /* Optional */
   margin: auto;
   width: 30%;
-} 
+}
+
+.spc {
+  margin-top: auto;
+  margin-bottom: 5%;
+}
