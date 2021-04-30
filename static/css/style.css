@@ -34,6 +34,15 @@ input::placeholder {
   width: 75%;
 } 
 
+
+.eli5 { 
+  display: flexbox;
+  justify-content: center;
+  align-items: center; /* Optional */
+  margin: auto;
+  width: 24%;
+}
+
 .flex { 
   display: flex;
   justify-content: center;

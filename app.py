@@ -66,17 +66,28 @@ def predict():
     d19= sheet_obj.cell(row = 2, column = 20).value
     d20= sheet_obj.cell(row = 2, column = 21).value
     arr=np.array([[d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20]])
+    
+    arr1=np.array([d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20])
 
     #int_features = [int(x) for x in request.form.values()]
     #final_features = [np.array(int_features)]
     prediction = model.predict(arr)
+
+    feature_names = ['MCM2', 'DEK', 'H2AFZ', 'METRN', 'NFIB', 'TPX2', 'MCM6', 'TOPBP1', 'FEN1', 'TTK', 'ESR1', 'MELK', 'E2F3', 'CYP2B7P', 'TP53TG1', 'RARRES1', 'ROPN1B', 'PLCH1', 'SLC7A8', 'MLPH']
+    from eli5 import show_prediction
+    import eli5 as eli
+    data = eli.show_prediction(model, arr1,
+                        feature_names=feature_names,
+                        show_feature_values=True).data
+    file = open("static/eli5.html","w")
+    file.write(data)
 
     output = prediction[0]
     if output==0:
         print("Chemotherapy Not Suitable")
     else:
         print("Chemotherapy Suitable")
-    return render_template('result.html', data=prediction, prediction_text=output)
+    return render_template('result.html', data=data, prediction_text=output)
 
 @app.route('/predict1',methods=['POST'])
 def predict1():
@@ -105,9 +116,20 @@ def predict1():
     d20= request.form['t']
     arr=np.array([[d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20]])
 
+    arr1=np.array([d1,d2,d3,d4,d5,d6,d7,d8,d9,d10,d11,d12,d13,d14,d15,d16,d17,d18,d19,d20])
+
     #int_features = [int(x) for x in request.form.values()]
     #final_features = [np.array(int_features)]
     prediction1 = model.predict(arr)
+
+    feature_names = ['MCM2', 'DEK', 'H2AFZ', 'METRN', 'NFIB', 'TPX2', 'MCM6', 'TOPBP1', 'FEN1', 'TTK', 'ESR1', 'MELK', 'E2F3', 'CYP2B7P', 'TP53TG1', 'RARRES1', 'ROPN1B', 'PLCH1', 'SLC7A8', 'MLPH']
+    from eli5 import show_prediction
+    import eli5 as eli
+    data = eli.show_prediction(model, arr1,
+                        feature_names=feature_names,
+                        show_feature_values=True).data
+    file = open("static/eli5.html","w")
+    file.write(data)
 
     output = prediction1[0]
     if output==0:

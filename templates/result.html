@@ -1,13 +1,29 @@
 {% extends 'layout.html' %}
 
+{% block script %}
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1"/>
+{% endblock %}
+
 {% block content %}
   <div class="container-fluid">
     {% if prediction_text == 1 %}
     <p class="lead text-center fs-1 spc"> Chemotherapy is Suitable</p>
-    <div class="tenor-gif-embed center" data-postid="5207407" data-share-method="host" data-width="30%" data-aspect-ratio="1.0"><a href="https://tenor.com/view/meme-successkid-hellsyes-ididit-fuckyeah-gif-5207407">Success Kid Is Successful! GIF</a> from <a href="https://tenor.com/search/successkid-gifs">Successkid GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    <div id="eli5" class="eli5"></div>
+    <!-- <div class="tenor-gif-embed center" data-postid="5207407" data-share-method="host" data-width="30%" data-aspect-ratio="1.0"><a href="https://tenor.com/view/meme-successkid-hellsyes-ididit-fuckyeah-gif-5207407">Success Kid Is Successful! GIF</a> from <a href="https://tenor.com/search/successkid-gifs">Successkid GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script> -->
     {% else %}
     <p class="lead text-center fs-1 spc"> Chemotherapy is NOT Suitable</p>
-    <div class="tenor-gif-embed center" data-postid="14135785" data-share-method="host" data-width="45%" data-aspect-ratio="1.7777777777777777"><a href="https://tenor.com/view/you-disappoint-me-disappointment-failure-unhappy-hopeless-gif-14135785">You Disappoint Me Disappointment GIF</a> from <a href="https://tenor.com/search/youdisappointme-gifs">Youdisappointme GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    <div id="eli5" class="eli5"></div>
+    <!-- <div class="tenor-gif-embed center" data-postid="14135785" data-share-method="host" data-width="45%" data-aspect-ratio="1.7777777777777777"><a href="https://tenor.com/view/you-disappoint-me-disappointment-failure-unhappy-hopeless-gif-14135785">You Disappoint Me Disappointment GIF</a> from <a href="https://tenor.com/search/youdisappointme-gifs">Youdisappointme GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script> -->
     {% endif %}
   </div>
+  <script> 
+    $(function(){
+      $("#eli5").load("./static/eli5.html"); 
+    });
+    $(function(){
+      $("#eli5").load("./static/eli5.html"); 
+    });
+  </script>
 {% endblock %}
