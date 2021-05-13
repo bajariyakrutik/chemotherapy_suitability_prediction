@@ -136,7 +136,7 @@ def predict1():
         print("Chemotherapy Not Suitable")
     else:
         print("Chemotherapy Suitable")
-    return render_template('result.html', data=prediction1, prediction_text=output)
+    return render_template('result.html', data=data, prediction_text=output)
 
 @app.route('/search',methods=['POST'])
 def search():
